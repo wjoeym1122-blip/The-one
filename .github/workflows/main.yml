@@ -1,0 +1,22 @@
+name: Build ApK
+on:
+  push:
+      branches: [main]
+jobs:
+  build:
+  runs-on: ubunty-latest
+    steps:
+      - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.22.0'
+      - run: flutter pub get
+      - run: flutter build apk --release
+      - uses:
+      with:
+       name: heather-apk
+path: build/app/outputs/flutter-apk/app-release.apk
+
+       
+
+   
